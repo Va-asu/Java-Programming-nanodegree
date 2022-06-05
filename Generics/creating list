@@ -1,0 +1,23 @@
+import java.util.*;
+
+public class Main {
+    public static void display(List<String> names)
+    {
+      Iterator<String> iterator=names.iterator();
+      while(iterator.hasNext())
+      {
+        System.out.print(iterator.next()+" ");
+      }
+      System.out.println(" ");
+    }
+    public static void main(String[] args) {
+        List<String>names=new ArrayList<>();
+        names.add("vaasu");
+        names.add("rohit");
+        names.add("pavan");
+        
+        display(names);
+        names.remove(0);
+        display(names);
+    }
+}
