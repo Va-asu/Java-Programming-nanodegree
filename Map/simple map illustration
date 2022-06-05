@@ -1,0 +1,23 @@
+import java.util.*;
+public class Main{
+    public static void main(String[] args)
+    {
+        Map<String, Person>map=new HashMap<>();
+        Person mike=new Person("mike","mike1@gmail.com");
+        Person john=new Person("john","john1@gmail.com");
+        Person jeff=new Person("jeff","jeff@gmail.com");
+        
+        map.put(mike.getEmail(),mike);
+        map.put(john.getEmail(),john);
+        map.put(jeff.getEmail(),jeff);
+        //System.out.println(map);
+        for(String str:map.keySet())
+        {
+            System.out.println(map.get(str).getName()+" "+str);
+        }
+    }
+}
+
+
+//map.keySet() to get key
+//map.value() to get value for any key
