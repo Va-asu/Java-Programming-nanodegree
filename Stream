@@ -1,0 +1,17 @@
+package Interface;
+
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+public class StreamTest {
+
+   public String solve(){
+        return Stream.of("hello", "world")
+                .map(String::toUpperCase)
+                .collect(Collectors.joining("__", "", "!"));
+    }
+    public static void main(String[] args) {
+
+        System.out.println(new StreamTest().solve());
+    }
+}
