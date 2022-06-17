@@ -1,0 +1,30 @@
+
+class Solution
+{
+    //Function to find the next greater element for each element of the array.
+    public static long[] nextLargerElement(long[] arr, int n)
+    { 
+        long[] max=new long[n];
+        Stack<Integer>st=new Stack<>();
+        st.push(n-1);
+        max[n-1]=-1;
+        
+        
+        while(n-->0)
+        {
+            while(st.size()>0&&arr[n]>=arr[st.peek()])
+            {
+                st.pop();
+            }
+            if(st.size()!=0)
+            {
+                max[n]=arr[st.peek()];
+            }else{
+                max[n]=-1;
+            }
+            st.push(n);
+            
+        }
+        return max;
+    } 
+}
