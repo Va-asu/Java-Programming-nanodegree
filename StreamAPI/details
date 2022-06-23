@@ -1,0 +1,86 @@
+1. we should never declare any method in interface after the publishing the project,
+because it will affect all the classes implementing it,
+every class will have to implement it.....
+
+since java 1.8
+method in any interface can be defined only condition is there must be default keyword before it
+ex:-
+
+interface i {
+    default void show(){
+       System.out.println("i am default function");
+    }
+}
+
+so there is no need to define this function in any class (if there is not any problem arriving
+like multiple Inheritance)
+
+2. List<Integer> list= Arrays.asList(9,8,7,6);
+             Consumer<Integer>c=new Consumer<Integer>(){
+              public void accept(Integer t)
+              {
+                  System.out.println(t);
+              }
+          };
+          list.forEach(c);
+   List is an Interface and introduced in java 1.2
+   but forEach method is introduced in java 1.8
+
+   List extends Collections, Collections extends Iterable
+   so forEach methods comes from Iterable it is default method.
+
+3.        List<Integer> list= Arrays.asList(18,29,30,41);
+
+             list.forEach((i)-> System.out.println(i));
+             taking the value of i from collection and printing so why specify i two times
+             forEach knows we are taking value from collection
+             here comes the method reference concept
+             we have heard of call by value ,call by reference
+             java provide call by method that is called method reference
+
+           list.forEach(System.out::println);
+
+            forEach method is accessing the value, and we are passing println reference to it.
+            to specify what println is we have to tell forEach to what object or class println belongs
+            out is static object of System class
+          
+          same thing we can do by our own function ex:-
+              public static void main(String[] args)
+              {
+                  List<Integer> list= Arrays.asList(1,2,3,4,5,6);
+                  MethodRef2 obj=new MethodRef2();
+                  list.forEach(obj::doubleIt);
+                  //obj is object of the class MethodRef2 and method reference is passed to the forEach
+              }
+              public void doubleIt(int i)
+              {
+                  System.out.println(i*2);
+              }
+
+4.   Stream is new concept added to java after java 8, it is use to process a data(Large data)
+     once a stream used in code ,cant be reused.
+     there are concept of parallel stream, intermediate(filter(),map()) and terminate function( findFirst(), forEach())
+
+5.          //traditional method
+             int result=0;
+             for(int i:list)
+             {
+                 if(i%5==0)
+                 {
+                     result=i*2;
+                     break;
+                 }
+             }
+             System.out.println(result);
+
+             //Stream API
+             System.out.println(list.stream().filter(i->i%5==0).map(i->i*2).findFirst().orElse(0));
+             /**
+             this is the LAZY FUNCTION and here find function will send signal,need only one element which should
+             be maped twice for its value so map function will map the first value it will get from filer function
+             which it will filter till this did not get the first value that is satisfying condition i%5==0.
+
+             so it will be efficient than the traditional method for doing the same.
+             **/
+
+             ** it can be proved by creating out own function for filtering and maping
