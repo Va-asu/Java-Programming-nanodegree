@@ -1,0 +1,6 @@
+1. Class1 ->  to create file ,write and read file.
+2. Class2 ->  create PropertyFile, store and load data using output and input stream.
+3. Class3 ->  create an object of Save class and assigning data to its params then save the object using file
+              output stream again retrieving the object using file input stream.
+4. Class4 ->  Serialization using XMLencoder -- writeObject() [Student and college class associated with class4 and class5
+5. Class5 ->  Deserialization using XMLDecoder --readObject() [return object of object class so convert it to required class
