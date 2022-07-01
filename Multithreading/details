@@ -1,0 +1,80 @@
+1. There is always one thread available for any code to run which is Calculatorr.Main method thread
+
+2. If there is process going on and it has to be done quickly so we can distribute the data
+   on different threads, an application to have multiple threads of execution running concurrently.
+   Thread has many methods like start, sleep, run, stop
+   using sleep method, a application can be forced to execute its output with some period
+   ex:-
+      class Hi extends Thread{
+          public void run()
+          {
+              for (int i=0;i<5;i++)
+              {
+                  System.out.println("HI");
+                  try
+                  {
+                      Thread.sleep(1000);
+                      //for one sec it will stop between every iteration
+                  } catch (Exception e) {
+                      System.out.println(e);
+                  }
+              }
+          }
+      }
+
+3.  To overcome the multiple inheritance problem, runnable interface can be used
+     public static void main(String[] args) {
+            Runnable r1=new Runnable() {
+                @Override
+                public void run() {
+                    for (int i=0;i<5;i++)
+                    {
+                        System.out.println("hii");
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }
+            };
+            Thread t1=new Thread(r1);
+            t1.start();
+     }
+4.  Thread implements Runnable Interface and it is functional interface so we can use the concept of the lambda
+    expressions and shorten our code :-
+         Thread t1=new Thread(()-> {
+
+                     for (int i=0;i<5;i++)
+                     {
+                         System.out.println("hii");
+                         try {
+                             Thread.sleep(500);
+                         } catch (InterruptedException e) {
+                             throw new RuntimeException(e);
+                         }
+                     }
+                 });
+
+5.  if in main class two threads t1 and t2 are running in Calculatorr.Main method and simply using System.out.println("Bye");
+    can not print Bye at the end but it will print Bye in between or after both thread will execute for one time,
+    because there is main thread also which will also execute
+    to stop Calculatorr.Main thread until t1 and t2 will fully execute code, join method will be used which will wait until
+    t1 and t2 thread completes there job :-
+       t1.join;
+       t2.join;
+
+       and there is also a method isAlive() to check if thread is alive or not.
+
+6.  t1.getName(), t1.setName(), t1.getPriority() are some function threat have,
+            threads also have priority from 1 to 10 scale.
+            Thread.MIN_PRIORITY=1
+            Thread.MAX_PRIORITY=10
+            Thread.NORM_PRIORITY=5
+            using setPriority() function we can set priority of any thread
+
+7.  synchronized function will not allow multiple threads to work at same time, instead only one thread will work
+    one time.
+    ex:-  public synchronized void increament(){ .......}
+
+8.
