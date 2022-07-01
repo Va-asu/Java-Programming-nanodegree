@@ -1,0 +1,5 @@
+1.interface charger has one method -> charge(String str).
+2.Samsung class creating instance of charger and charging the mobile.
+3.client is making request to charger to charge the samsung mobile but charger does not have adapter.
+4.so as adapter request to charge the phone in which showCharge is helping.
+
